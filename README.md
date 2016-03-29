@@ -16,23 +16,19 @@ Just init and create observer:
 
 ```java
 RxSensor rxSensor = new RxSensor(this);
-        rxSensor.observe(Sensor.TYPE_ACCELEROMETER, SensorManager.SENSOR_DELAY_NORMAL)
-                .subscribe(new Subscriber<RxSensorEvent>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(RxSensorEvent sensorEvent) {
-                        Log.d("RxSensor", "event: " + sensorEvent.toString());
-                    }
-                });
+rxSensor.observe(Sensor.TYPE_ACCELEROMETER, SensorManager.SENSOR_DELAY_NORMAL)
+    .subscribe(new Subscriber<RxSensorEvent>() {
+        @Override
+        public void onCompleted() { }
+        
+        @Override
+        public void onError(Throwable e) { }
+        
+        @Override
+        public void onNext(RxSensorEvent sensorEvent) {
+            Log.d("RxSensor", "event: " + sensorEvent.toString());
+        }
+    });
 ```
 
 # License
