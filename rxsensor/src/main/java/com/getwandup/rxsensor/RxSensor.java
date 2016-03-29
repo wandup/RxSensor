@@ -6,6 +6,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import com.getwandup.rxsensor.domain.RxSensorEvent;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -25,10 +27,10 @@ public class RxSensor {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
-    public Observable<SensorEvent> observe(final int sensorType, final int samplingPeriodUs) {
-        return Observable.create(new Observable.OnSubscribe<SensorEvent>() {
+    public Observable<RxSensorEvent> observe(final int sensorType, final int samplingPeriodUs) {
+        return Observable.create(new Observable.OnSubscribe<RxSensorEvent>() {
             @Override
-            public void call(final Subscriber<? super SensorEvent> subscriber) {
+            public void call(final Subscriber<? super RxSensorEvent> subscriber) {
 
                 final Sensor sensor = sensorManager.getDefaultSensor(sensorType);
 
@@ -39,7 +41,7 @@ public class RxSensor {
                 final SensorEventListener sensorEventListener = new SensorEventListener() {
                     @Override
                     public void onSensorChanged(SensorEvent event) {
-                        subscriber.onNext(event);
+                        subscriber.onNext(RxSensorEvent.from(event));
                     }
 
                     @Override
