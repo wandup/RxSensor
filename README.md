@@ -1,4 +1,5 @@
 # RxSensor
+[![Build Status](https://travis-ci.org/wandup/RxSensor.svg?branch=master)](https://travis-ci.org/wandup/RxSensor)
 
 Simple Reactive wrapper for Android sensors 
 
