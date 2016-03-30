@@ -1,5 +1,6 @@
 # RxSensor
 [![Build Status](https://travis-ci.org/wandup/RxSensor.svg?branch=master)](https://travis-ci.org/wandup/RxSensor)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxSensor-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3350)
 
 Simple Reactive wrapper for Android sensors 
 
