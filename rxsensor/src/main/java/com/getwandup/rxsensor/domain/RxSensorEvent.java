@@ -9,50 +9,18 @@ import java.util.Arrays;
  * Container for SensorEvent
  *
  * @author manolovn
+ * @author TomeOkin
  */
 public class RxSensorEvent {
-
-    private float[] values;
-    private Sensor sensor;
-    private int accuracy;
-    private long timestamp;
+    public float[] values;
+    public Sensor sensor;
+    public int accuracy;
+    public long timestamp;
 
     public RxSensorEvent(float[] values, Sensor sensor, int accuracy, long timestamp) {
         this.values = values;
         this.sensor = sensor;
         this.accuracy = accuracy;
-        this.timestamp = timestamp;
-    }
-
-    public float[] getValues() {
-        return values;
-    }
-
-    public void setValues(float[] values) {
-        this.values = values;
-    }
-
-    public Sensor getSensor() {
-        return sensor;
-    }
-
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
-    }
-
-    public int getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(int accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -64,10 +32,14 @@ public class RxSensorEvent {
     @Override
     public String toString() {
         return "RxSensorEvent{"
-                + "values=" + Arrays.toString(values)
-                + ", sensor=" + sensor
-                + ", accuracy=" + accuracy
-                + ", timestamp=" + timestamp
+                + "values="
+                + Arrays.toString(values)
+                + ", sensor="
+                + sensor
+                + ", accuracy="
+                + accuracy
+                + ", timestamp="
+                + timestamp
                 + '}';
     }
 }

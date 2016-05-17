@@ -10,6 +10,7 @@ import rx.functions.Func1;
  * Low pass filter implemented using Transformer api
  *
  * @author manolovn
+ * @author TomeOkin
  */
 public class LowPassFilter implements Transformer<RxSensorEvent, RxSensorEvent> {
 
@@ -24,8 +25,7 @@ public class LowPassFilter implements Transformer<RxSensorEvent, RxSensorEvent> 
         return source.map(new Func1<RxSensorEvent, RxSensorEvent>() {
             @Override
             public RxSensorEvent call(RxSensorEvent sensorEvent) {
-                sensorEvent.setValues(
-                        lowPass(sensorEvent.getValues().clone(), sensorEvent.getValues()));
+                sensorEvent.values = lowPass(sensorEvent.values.clone(), sensorEvent.values);
                 return sensorEvent;
             }
         });
