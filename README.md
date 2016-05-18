@@ -1,10 +1,10 @@
 # RxSensor
--[![Build Status](https://travis-ci.org/wandup/RxSensor.svg?branch=master)](https://travis-ci.org/wandup/RxSensor)
--[![Maven Central](https://img.shields.io/maven-central/v/com.getwandup/rxsensor.svg)](https://maven-badges.herokuapp.com/maven-central/com.getwandup/rxsensor)
--[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxSensor-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3350)
+[![Build Status](https://travis-ci.org/wandup/RxSensor.svg?branch=master)](https://travis-ci.org/wandup/RxSensor)
+[![Maven Central](https://img.shields.io/maven-central/v/com.getwandup/rxsensor.svg)](https://maven-badges.herokuapp.com/maven-central/com.getwandup/rxsensor)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxSensor-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3350)
 
 Current Status
--[![Build Status](https://travis-ci.org/TomeOkin/RxSensor.svg?branch=master)](https://travis-ci.org/TomeOkin/RxSensor/)
+[![Build Status](https://travis-ci.org/TomeOkin/RxSensor.svg?branch=master)](https://travis-ci.org/TomeOkin/RxSensor/)
 
 Simple Reactive wrapper for Android sensors 
 
