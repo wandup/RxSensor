@@ -10,10 +10,13 @@ import rx.functions.Func1;
  * Low pass filter implemented using Transformer api
  *
  * @author manolovn
+ * @author TomeOkin
+ * @see <a href="https://www.built.io/blog/2013/05/applying-low-pass-filter-to-android-sensors-readings/">Applying
+ * Low Pass Filter to Android Sensor’s Readings</a>
  */
 public class LowPassFilter implements Transformer<RxSensorEvent, RxSensorEvent> {
-
     private final float factor;
+    private float[] sensorValue;
 
     public LowPassFilter(float factor) {
         this.factor = factor;
@@ -24,20 +27,21 @@ public class LowPassFilter implements Transformer<RxSensorEvent, RxSensorEvent> 
         return source.map(new Func1<RxSensorEvent, RxSensorEvent>() {
             @Override
             public RxSensorEvent call(RxSensorEvent sensorEvent) {
-                sensorEvent.setValues(
-                        lowPass(sensorEvent.getValues().clone(), sensorEvent.getValues()));
+                sensorValue = lowPass(sensorEvent.values.clone(), sensorValue);
+                sensorEvent.values = sensorValue.clone();
                 return sensorEvent;
             }
         });
     }
 
-    protected float[] lowPass(float[] input, float[] output) {
-        if (output == null) {
-            return input;
+    protected float[] lowPass(float[] current, float[] last) {
+        if (last == null) {
+            return current;
         }
-        for (int i = 0; i < input.length; i++) {
-            output[i] = output[i] + factor * (input[i] - output[i]);
+
+        for (int i = 0; i < current.length; i++) {
+            last[i] = last[i] + factor * (current[i] - last[i]);
         }
-        return output;
+        return last;
     }
 }
