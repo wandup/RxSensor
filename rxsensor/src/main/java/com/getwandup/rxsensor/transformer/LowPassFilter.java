@@ -1,7 +1,5 @@
 package com.getwandup.rxsensor.transformer;
 
-import android.util.Log;
-
 import com.getwandup.rxsensor.domain.RxSensorEvent;
 
 import rx.Observable;
@@ -22,7 +20,6 @@ public class LowPassFilter implements Transformer<RxSensorEvent, RxSensorEvent> 
 
     public LowPassFilter(float factor) {
         this.factor = factor;
-        Log.i("take", "create LowPassFilter");
     }
 
     @Override
@@ -31,19 +28,20 @@ public class LowPassFilter implements Transformer<RxSensorEvent, RxSensorEvent> 
             @Override
             public RxSensorEvent call(RxSensorEvent sensorEvent) {
                 sensorValue = lowPass(sensorEvent.values.clone(), sensorValue);
+                sensorEvent.values = sensorValue.clone();
                 return sensorEvent;
             }
         });
     }
 
-    protected float[] lowPass(float[] input, float[] output) {
-        if (output == null) {
-            return input;
+    protected float[] lowPass(float[] current, float[] last) {
+        if (last == null) {
+            return current;
         }
 
-        for (int i = 0; i < input.length; i++) {
-            output[i] = output[i] + factor * (input[i] - output[i]);
+        for (int i = 0; i < current.length; i++) {
+            last[i] = last[i] + factor * (current[i] - last[i]);
         }
-        return output;
+        return last;
     }
 }
