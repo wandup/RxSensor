@@ -4,8 +4,6 @@ import com.getwandup.rxsensor.domain.RxSensorEvent;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import rx.Observable;
 import rx.functions.Func1;
 import rx.observers.TestSubscriber;
