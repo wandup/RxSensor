@@ -12,7 +12,7 @@ Add the dependency
 
 ```groovy
 dependencies {
-    compile 'com.getwandup:rxsensor:1.0.0'
+    compile 'com.getwandup:rxsensor:1.0.1'
 }
 ```
 
