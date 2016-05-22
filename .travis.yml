@@ -1,16 +1,17 @@
 language: android
+jdk: oraclejdk8
+sudo: false
 
 android:
   components:
     - tools
+    - platform-tools
     - build-tools-23.0.3
     - android-23
-    - extra-android-support
-    - extra-google-m2repository
     - extra-android-m2repository
 
 script:
-  ./gradlew build checkstyle jacocoTestReport assembleAndroidTest
+  ./gradlew build checkstyle jacocoTestReport
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
