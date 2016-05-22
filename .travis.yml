@@ -10,4 +10,7 @@ android:
     - extra-android-m2repository
 
 script:
-  ./gradlew checkstyle build
+  ./gradlew build checkstyle jacocoTestReport assembleAndroidTest
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

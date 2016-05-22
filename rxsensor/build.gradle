@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'checkstyle'
+apply plugin: 'jacoco-android'
+apply from: '../script/checkstyle.gradle'
+apply from: '../script/publish.gradle'
 
 android {
     compileSdkVersion 23
@@ -16,6 +18,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled = true
+        }
     }
     lintOptions {
         abortOnError false
@@ -23,20 +28,9 @@ android {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'io.reactivex:rxandroid:1.2.0'
     compile 'io.reactivex:rxjava:1.1.5'
+
+    testCompile 'junit:junit:4.12'
 }
-
-//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
-
-task checkstyle(type: Checkstyle) {
-    configFile file('../config/checkstyle/checkstyle.xml')
-    source 'src/main/java'
-    include '**/*.java'
-    exclude '**/gen/**'
-
-    classpath = files()
-}
-
