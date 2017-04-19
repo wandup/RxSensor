@@ -21,14 +21,13 @@ public class RxSensor {
 
     private final SensorManager sensorManager;
 
-    private boolean isUnsubscribed;
-
     public RxSensor(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
     public Observable<RxSensorEvent> observe(final int sensorType, final int samplingPeriodUs) {
         return Observable.create(new Observable.OnSubscribe<RxSensorEvent>() {
+
             @Override
             public void call(final Subscriber<? super RxSensorEvent> subscriber) {
 
@@ -51,9 +50,11 @@ public class RxSensor {
                 };
 
                 sensorManager.registerListener(sensorEventListener, sensor, samplingPeriodUs);
-                isUnsubscribed = false;
 
                 subscriber.add(new Subscription() {
+
+                    private boolean isUnsubscribed = false;
+
                     @Override
                     public void unsubscribe() {
                         sensorManager.unregisterListener(sensorEventListener);
